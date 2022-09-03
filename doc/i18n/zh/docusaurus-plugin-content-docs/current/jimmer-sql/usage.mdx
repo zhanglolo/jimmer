@@ -609,7 +609,7 @@ group by tb_1_.STORE_ID
 <TabItem value="java" label="Java">
 
 ```java
-ConfigurableTypedRootQuery<BookTable, Book> bookQuery =
+ConfigurableRootQuery<BookTable, Book> bookQuery =
     sqlClient.createQuery(BookTable.class, (q, book) -> {
         return q
             .where(book.store().name().eq("O'REILLY"))
@@ -631,7 +631,7 @@ List<Book> rows = bookQuery
     // highlight-next-line
     .limit(rowCount / 3, rowCount / 3)
     .execute();
-System.out.println("Top 2 rows: " + top2Rows);
+System.out.println("Top 2 rows: " + rows);
 ```
 
 </TabItem>
