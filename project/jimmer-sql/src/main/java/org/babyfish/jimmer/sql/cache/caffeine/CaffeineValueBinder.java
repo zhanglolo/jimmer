@@ -136,6 +136,16 @@ public class CaffeineValueBinder<K, V> extends AbstractTrackingConsumerBinder<K>
         return new Builder<>(null, prop);
     }
 
+    @NotNull
+    public static <K, V> Builder<K, V> forImmutable(ImmutableProp prop) {
+        return new Builder<>(null, prop);
+    }
+
+    @NotNull
+    public static <K, V> Builder<K, V> forImmutable(ImmutableType type) {
+        return new Builder<>(type, null);
+    }
+
     public static class Builder<K, V> {
         private final ImmutableType type;
         private final ImmutableProp prop;

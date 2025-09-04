@@ -74,7 +74,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
             return null;
         }
         return CaffeineValueBinder
-                .<K, V>forObject(type)
+                .<K, V>forImmutable(type)
                 .subscribe(args.tracker)
                 .maximumSize(args.localCacheMaximumSize)
                 .duration(args.localCacheDuration)
@@ -87,7 +87,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
             return null;
         }
         return CaffeineValueBinder
-                .<K, V>forProp(prop)
+                .<K, V>forImmutable(prop)
                 .subscribe(args.tracker)
                 .maximumSize(args.localCacheMaximumSize)
                 .duration(args.localCacheDuration)
@@ -100,7 +100,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
             return null;
         }
         return CaffeineHashBinder
-                .<K, V>forProp(prop)
+                .<K, V>forImmutable(prop)
                 .subscribe(args.tracker)
                 .maximumSize(args.multiViewLocalCacheMaximumSize)
                 .duration(args.multiViewLocalCacheDuration)
@@ -110,7 +110,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
     private <K, V> SimpleBinder<K, V> redisValueBinder(ImmutableType type) {
         Args args = args();
         return RedisValueBinder
-                .<K, V>forObject(type)
+                .<K, V>forImmutable(type)
                 .publish(args.tracker)
                 .objectMapper(args.objectMapper)
                 .keyPrefixProvider(args.keyPrefixProvider)
@@ -128,7 +128,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
     private <K, V> SimpleBinder<K, V> redisValueBinder(ImmutableProp prop) {
         Args args = args();
         return RedisValueBinder
-                .<K, V>forProp(prop)
+                .<K, V>forImmutable(prop)
                 .publish(args.tracker)
                 .objectMapper(args.objectMapper)
                 .keyPrefixProvider(args.keyPrefixProvider)
@@ -146,7 +146,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
     private <K, V> SimpleBinder.Parameterized<K, V> redisHashBinder(ImmutableProp prop) {
         Args args = args();
         return RedisHashBinder
-                .<K, V>forProp(prop)
+                .<K, V>forImmutable(prop)
                 .publish(args.tracker)
                 .objectMapper(args.objectMapper)
                 .keyPrefixProvider(args.keyPrefixProvider)

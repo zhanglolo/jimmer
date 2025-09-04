@@ -99,6 +99,11 @@ public class RedisHashBinder<K, V> extends AbstractRemoteHashBinder<K, V> {
         return new Builder<>(null, prop);
     }
 
+    @NotNull
+    public static <K, V> Builder<K, V> forImmutable(ImmutableProp prop) {
+      return new Builder<>(null, prop);
+    }
+
     public static class Builder<K, V> extends AbstractBuilder<K, V, Builder<K, V>> {
 
         private RedisOperations<String, byte[]> operations;

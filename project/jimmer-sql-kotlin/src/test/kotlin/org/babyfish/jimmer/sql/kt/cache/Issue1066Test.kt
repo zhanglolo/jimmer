@@ -26,7 +26,7 @@ class Issue1066Test : AbstractQueryTest() {
                         return ChainCacheBuilder<Any, Any>()
                             .add(
                                 CaffeineValueBinder
-                                    .forObject<Any, Any>(type)
+                                    .forImmutable<Any, Any>(type)
                                     .maximumSize(1024)
                                     .duration(Duration.ofHours(1))
                                     .build()
@@ -37,7 +37,7 @@ class Issue1066Test : AbstractQueryTest() {
                         return ChainCacheBuilder<Any, List<*>>()
                             .add(
                                 CaffeineValueBinder
-                                    .forProp<Any, List<*>>(prop)
+                                    .forImmutable<Any, List<*>>(prop)
                                     .maximumSize(1024)
                                     .duration(Duration.ofHours(1))
                                     .build()
@@ -48,7 +48,7 @@ class Issue1066Test : AbstractQueryTest() {
                         return ChainCacheBuilder<Any, Any>()
                             .add(
                                 CaffeineValueBinder
-                                    .forProp<Any, Any>(prop)
+                                    .forImmutable<Any, Any>(prop)
                                     .maximumSize(1024)
                                     .duration(Duration.ofHours(1))
                                     .build()

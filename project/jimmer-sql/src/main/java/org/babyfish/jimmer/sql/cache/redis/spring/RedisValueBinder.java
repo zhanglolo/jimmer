@@ -97,6 +97,16 @@ public class RedisValueBinder<K, V> extends AbstractRemoteValueBinder<K, V> {
         return new Builder<>(null, prop);
     }
 
+    @NotNull
+    public static <K, V> Builder<K, V> forImmutable(ImmutableProp prop) {
+        return new Builder<>(null, prop);
+    }
+
+    @NotNull
+    public static <K, V> Builder<K, V> forImmutable(ImmutableType type) {
+        return new Builder<>(type, null);
+    }
+
     public static class Builder<K, V> extends AbstractBuilder<K, V, Builder<K, V>> {
 
         private RedisOperations<String, byte[]> operations;

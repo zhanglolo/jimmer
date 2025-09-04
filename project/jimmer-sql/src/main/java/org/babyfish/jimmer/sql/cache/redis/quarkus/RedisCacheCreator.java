@@ -78,7 +78,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
             return null;
         }
         return CaffeineValueBinder
-                .<K, V> forObject(type)
+                .<K, V>forImmutable(type)
                 .subscribe(args.tracker)
                 .maximumSize(args.localCacheMaximumSize)
                 .duration(args.localCacheDuration)
@@ -91,7 +91,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
             return null;
         }
         return CaffeineValueBinder
-                .<K, V> forProp(prop)
+                .<K, V>forImmutable(prop)
                 .subscribe(args.tracker)
                 .maximumSize(args.localCacheMaximumSize)
                 .duration(args.localCacheDuration)
@@ -104,7 +104,7 @@ public class RedisCacheCreator extends AbstractCacheCreator {
             return null;
         }
         return CaffeineHashBinder
-                .<K, V> forProp(prop)
+                .<K, V>forImmutable(prop)
                 .subscribe(args.tracker)
                 .maximumSize(args.multiViewLocalCacheMaximumSize)
                 .duration(args.multiViewLocalCacheDuration)
